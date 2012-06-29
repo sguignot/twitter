@@ -26,7 +26,7 @@ module Twitter
     # @param other [Twitter::Identifiable]
     # @return [Boolean]
     def ==(other)
-      super || (other.class == self.class && other.id == self.id)
+      super || (other.class == self.class && !other.id.nil? && other.id == self.id) || (!other.attrs.empty? && other.class == self.class && other.attrs == self.attrs)
     end
 
     # @return [Integer]
